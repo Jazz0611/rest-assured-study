@@ -5,19 +5,19 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class FruitTest {
+public class VeggieTest {
     //Rest-Assured
-    // [{"description":"Winter fruit","name":"Apple"},
-    //  {"description":"Tropical fruit","name":"Pineapple"}]
+    // [{"description":"Root vegetable, usually orange","name":"Carrot"},
+    //{"description":"Summer squash","name":"Zucchini"}]
     @Test
-    public void testGetFruits() {
+    public void testGetVeggies() {
         given()
                 .relaxedHTTPSValidation()
                 .accept(ContentType.JSON)
                 .when()
-                .get("https://staging.tiered-planet.net/mild-temper/fruits")
+                .get("https://staging.tiered-planet.net/mild-temper/legumes")
                 .then()
                 .assertThat()
-                .body("[0].description", equalTo("Winter fruit"));
+                .body("[1].name", equalTo("Zucchini"));
     }   
 }
